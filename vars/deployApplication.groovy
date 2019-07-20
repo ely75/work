@@ -30,6 +30,7 @@ def deploy = { environment, environmentInformations ->
 							echo  "Etape de Build from ${Appconfig['Repository']} "
 							Appconfig.DeployEnv.each {
 									echo " nom deploy_${it.key} "
+									echo " ${params."deploy_${it.key}"} "
 									echo " ${params.deploy_rec} "
 									
 									}
