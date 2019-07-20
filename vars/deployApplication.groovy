@@ -25,7 +25,7 @@ def deploy = { environment, environmentInformations ->
 
 
 	pipeline {
-		agent none
+		agent any
 		stages {
 
 			stage('Build') {
