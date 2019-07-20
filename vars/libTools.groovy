@@ -6,7 +6,7 @@ def miseAjourDeployParameter(app, params) {
 }	
 
 def checkoutAfaire(app) {
-	//app.workspace = pwd()
+	app.workspace = pwd()
 	echo "Construction de ${app.name} ${env.BRANCH_NAME} "
 	
 	deleteDir()
