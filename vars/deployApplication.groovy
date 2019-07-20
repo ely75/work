@@ -1,18 +1,20 @@
 def call(Map pipelineParams) {
+//def v_build = pipelineParams['build']
+
 	pipeline {
 		agent none
 		stages {
 
 			stage('Build') {
 				steps {
-						sh 'echo  "Etape de Build {pipelineParams[build]}" '
+						echo  "Etape de Build  "
 					}
 			}
 			
 			stage('Test') {
 				steps {
 						
-						sh 'echo  "Etape de test {pipelineParams[test]}" '
+						echo  "Etape de test "
 						
 					}
 			}	
