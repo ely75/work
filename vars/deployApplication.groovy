@@ -5,13 +5,15 @@ def call(Map pipelineParams) {
 
 			stage('Build') {
 				steps {
-						echo " Etape de Build"
+						sh 'echo  "Etape de Build {pipelineParams[build]}" '
 					}
 			}
 			
 			stage('Test') {
 				steps {
-						echo " Etape de Test"
+						
+						sh 'echo  "Etape de test {pipelineParams[test]}" '
+						
 					}
 			}	
 			
