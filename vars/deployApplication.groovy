@@ -12,8 +12,9 @@ Appconfig.DeployEnv.each {
 pipelineProperties.add(parameters(pipelineParameters))
 properties(pipelineProperties)
 
-def miseAjourDeployParameter = { environment, autoDeployParameter ->
-		Appconfig.DeployEnv[environment].deploy = autoDeployParameter
+def miseAjourDeployParameter = { environment ->
+		x =  ${params."Adeployer_${environment}"}
+		Appconfig.DeployEnv[environment].deploy = x
 	}
 
 def deploy = { environment, environmentInformations ->
@@ -33,7 +34,7 @@ def deploy = { environment, environmentInformations ->
 						script {
 							echo  "Etape de Build from ${Appconfig['Repository']} "
 							
-							Appconfig.DeployEnv.each {  miseAjourDeployParameter it.key , ${params."Adeployer_${it.key}"} }
+							Appconfig.DeployEnv.each {  miseAjourDeployParameter it.key  }
 									/*echo " nom Adeployer_${it.key} "
 									Appconfig.DeployEnv[it.key] = 
 									echo " ${params."Adeployer_${it.key}"} "
