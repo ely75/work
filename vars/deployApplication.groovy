@@ -45,7 +45,7 @@ def deploy = { environment, environmentInformations ->
 								def deployBranches = [:]
 								Appconfig.DeployEnv.each {
 								def x = "deploy_${it.key}"
-								echo " env $x "
+								echo " env ${params.$x} "
 									if( it.value.deploy ) {
 										deployBranches[it.value.name] = { deploy it.key, it.value.deploy }
 									}
