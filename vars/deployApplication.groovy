@@ -44,7 +44,7 @@ def deploy = { environment, environmentInformations ->
 							script {
 								def deployBranches = [:]
 								Appconfig.DeployEnv.each {
-									if(it.value.deploy ) 
+									if(params["deploy_${it.key}"] )  
 										deployBranches[it.value.name] = { deploy it.key, it.value }
 								}
 								parallel deployBranches
