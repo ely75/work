@@ -32,8 +32,8 @@ def deploy = { environment, environmentInformations ->
 				steps {
 						script {
 							echo  "Etape de Build from ${Appconfig['Repository']} "
-							Appconfig.DeployEnv.each {  miseAjourDeployParameter it.key  }	
-							}
+							libTools.miseAjourDeployParameter(Appconfig, params)
+							
 					}
 			}
 			
@@ -51,7 +51,7 @@ def deploy = { environment, environmentInformations ->
 							script {
 								def deployBranches = [:]
 								Appconfig.DeployEnv.each {
-									if( it.value.deploy ) {
+									if( Appconfig.DeployEnv[it.key].deploy ) {
 										deployBranches[it.value.name] = { deploy it.key, it.value.deploy }
 									}
 								}
