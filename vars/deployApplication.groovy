@@ -1,8 +1,6 @@
-def call(mymap = [:]) {
-
-def themap = mymap
+def call(Map pipelineParams) {
 	pipeline {
-		
+		agent none
 		stages {
 
 			stage('Build') {
