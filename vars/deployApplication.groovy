@@ -1,6 +1,6 @@
 def call(Map pipelineParams) {
 
-def v_build = "a"
+def v_build = pipelineParams['build']
 
 	pipeline {
 		agent none
