@@ -39,7 +39,7 @@ def deploy = { environment, environmentInformations ->
 			
 			stage('Deploy') {
 				steps {
-					dir(workspace) {
+					//dir(workspace) {
 							
 							script {
 								def deployBranches = [:]
@@ -49,7 +49,7 @@ def deploy = { environment, environmentInformations ->
 								}
 								parallel deployBranches
 							}
-					}	
+					//}	
 						
 					}
 			}		
