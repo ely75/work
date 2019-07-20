@@ -12,27 +12,44 @@ Appconfig.DeployEnv.each {
 pipelineProperties.add(parameters(pipelineParameters))
 properties(pipelineProperties)
 
+def deploy = { environment, environmentInformations ->
+   echo " Etape de Deploy1 ${environment}"
+   echo " Etape de Deploy2 ${environmentInformations} "
+}
+
+
+
 	pipeline {
 		agent none
 		stages {
 
 			stage('Build') {
 				steps {
-						echo  "Etape de Build ${Appconfig['appname']} "
+						echo  "Etape de Build from ${Appconfig['Repository']} "
 					}
 			}
 			
 			stage('Test') {
 				steps {
-						
-						echo  "Etape de test ${Appconfig['appname']}"
+					cho  "Etape de test ${Appconfig['appname']}"
 						
 					}
 			}	
 			
 			stage('Deploy') {
 				steps {
-						echo " Etape de Deploy"
+					dir(workspace) {
+							
+							script {
+								def deployBranches = [:]
+								Appconfig.DeployEnv.each {
+									if(it.value.deploy ) 
+										deployBranches[it.value.name] = { deploy it.key, it.value }
+								}
+								parallel deployBranches
+							}
+					}	
+						
 					}
 			}		
 
