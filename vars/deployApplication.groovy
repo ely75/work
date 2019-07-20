@@ -1,5 +1,6 @@
-def call() {
+def call(mymap = [:]) {
 
+def themap = mymap
 	pipeline {
 		
 		stages {
