@@ -13,7 +13,7 @@ pipelineProperties.add(parameters(pipelineParameters))
 properties(pipelineProperties)
 
 def miseAjourDeployParameter = { environment, autoDeployParameter ->
-		Appconfig .DeployEnv[environment].deploy = autoDeployParameter
+		Appconfig.DeployEnv[environment].deploy = autoDeployParameter
 	}
 
 def deploy = { environment, environmentInformations ->
@@ -39,7 +39,6 @@ def deploy = { environment, environmentInformations ->
 									echo " ${params."Adeployer_${it.key}"} "
 									echo " ${params.Adeployer_rec} "*/
 									
-									}
 							}
 					}
 			}
