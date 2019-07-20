@@ -1,6 +1,7 @@
 def call(Map pipelineParams) {
 
 def v_build = pipelineParams['build']
+def config = pipelineParams
 
 	pipeline {
 		agent none
@@ -15,7 +16,7 @@ def v_build = pipelineParams['build']
 			stage('Test') {
 				steps {
 						
-						echo  "Etape de test "
+						echo  "Etape de test ${config['test']}"
 						
 					}
 			}	
