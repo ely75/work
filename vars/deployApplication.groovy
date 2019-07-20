@@ -8,7 +8,7 @@ def v_build = "a"
 
 			stage('Build') {
 				steps {
-						echo  "Etape de Build  "
+						echo  "Etape de Build ${v_build} "
 					}
 			}
 			
