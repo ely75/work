@@ -7,10 +7,14 @@ def pipelineProperties = []
 def pipelineParameters = []
 
 Appconfig.DeployEnv.each {
-		pipelineParameters.add(booleanParam(description: "Déploiement en ${it.value.name} ?", name: "deploy_${it.key}", defaultValue: it.value.deploy))
+		pipelineParameters.add(booleanParam(description: "Déploiement en ${it.value.name} ?", name: "Adeployer_${it.key}", defaultValue: it.value.deploy))
 	}
 pipelineProperties.add(parameters(pipelineParameters))
 properties(pipelineProperties)
+
+def miseAjourDeployParameter = { environment, autoDeployParameter ->
+		Appconfig .DeployEnv[environment].deploy = autoDeployParameter
+	}
 
 def deploy = { environment, environmentInformations ->
 	
@@ -28,10 +32,12 @@ def deploy = { environment, environmentInformations ->
 				steps {
 						script {
 							echo  "Etape de Build from ${Appconfig['Repository']} "
-							Appconfig.DeployEnv.each {
-									echo " nom deploy_${it.key} "
-									echo " ${params."deploy_${it.key}"} "
-									echo " ${params.deploy_rec} "
+							
+							Appconfig.DeployEnv.each {  miseAjourDeployParameter it.key , ${params."Adeployer_${it.key}"} }
+									/*echo " nom Adeployer_${it.key} "
+									Appconfig.DeployEnv[it.key] = 
+									echo " ${params."Adeployer_${it.key}"} "
+									echo " ${params.Adeployer_rec} "*/
 									
 									}
 							}
@@ -52,7 +58,7 @@ def deploy = { environment, environmentInformations ->
 							script {
 								def deployBranches = [:]
 								Appconfig.DeployEnv.each {
-									if( ${params."deploy_${it.key}"} ) {
+									if( it.value.deploy ) {
 										deployBranches[it.value.name] = { deploy it.key, it.value.deploy }
 									}
 								}
