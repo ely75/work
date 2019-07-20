@@ -26,11 +26,13 @@ def deploy = { environment, environmentInformations ->
 
 			stage('Build') {
 				steps {
-						echo  "Etape de Build from ${Appconfig['Repository']} "
-						Appconfig.DeployEnv.each {
+						script {
+							echo  "Etape de Build from ${Appconfig['Repository']} "
+							Appconfig.DeployEnv.each {
 									def x = "deploy_${it.key}"
 									echo " env ${params.$x} "
 									}
+							}
 					}
 			}
 			
