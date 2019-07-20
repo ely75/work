@@ -1,7 +1,16 @@
 def call(Map pipelineParams) {
 
-def v_build = pipelineParams['build']
-def config = pipelineParams
+
+def Appconfig = pipelineParams
+
+def pipelineProperties = []
+def pipelineParameters = []
+
+Appconfig.DeployEnv.each {
+		pipelineParameters.add(booleanParam(description: "Déploiement en ${it.value.name} ?", name: "deploy_${it.key}", defaultValue: it.value.deploy))
+	}
+pipelineProperties.add(parameters(pipelineParameters))
+properties(pipelineProperties)
 
 	pipeline {
 		agent none
