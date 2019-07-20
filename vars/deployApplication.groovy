@@ -33,6 +33,7 @@ def deploy = { environment, environmentInformations ->
 						script {
 							echo  "Etape de Build from ${Appconfig['Repository']} "
 							libTools.miseAjourDeployParameter(Appconfig, params)
+							libTools.checkout(Appconfig)
 						}
 							
 					}
