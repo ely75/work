@@ -10,5 +10,5 @@ def checkout(app) {
 	sh "echo Construction de ${app.name} ${env.BRANCH_NAME} sur `hostname` dans ${app.workspace}."
 	
 	deleteDir()
-	checkout scm
+	//checkout scm
 }
