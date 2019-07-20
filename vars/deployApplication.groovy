@@ -18,14 +18,14 @@ properties(pipelineProperties)
 
 			stage('Build') {
 				steps {
-						echo  "Etape de Build ${v_build} "
+						echo  "Etape de Build ${Appconfig['appname']} "
 					}
 			}
 			
 			stage('Test') {
 				steps {
 						
-						echo  "Etape de test ${config['test']}"
+						echo  "Etape de test ${Appconfig['appname']}"
 						
 					}
 			}	
