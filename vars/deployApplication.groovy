@@ -13,6 +13,7 @@ pipelineProperties.add(parameters(pipelineParameters))
 properties(pipelineProperties)
 
 def deploy = { environment, environmentInformations ->
+	
    echo " Etape de Deploy1 ${environment}"
    echo " Etape de Deploy2 ${environmentInformations} "
 }
@@ -31,7 +32,7 @@ def deploy = { environment, environmentInformations ->
 			
 			stage('Test') {
 				steps {
-					cho  "Etape de test ${Appconfig['appname']}"
+					echo  "Etape de test ${Appconfig['appname']}"
 						
 					}
 			}	
