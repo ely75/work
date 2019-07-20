@@ -44,8 +44,7 @@ def deploy = { environment, environmentInformations ->
 							script {
 								def deployBranches = [:]
 								Appconfig.DeployEnv.each {
-									echo " it.key = ${params.deploy_rec} "
-									if(${params.deploy_rec} )  {
+									if( it.value.deploy )  {
 										deployBranches[it.value.name] = { deploy it.key, it.value.deploy }
 									}
 								}
