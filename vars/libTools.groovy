@@ -9,6 +9,6 @@ def checkoutAfaire(app) {
 	//app.workspace = pwd()
 	echo "Construction de ${app.name} ${env.BRANCH_NAME} "
 	
-	//deleteDir()
-	//checkout scm
+	deleteDir()
+	checkout scm
 }
