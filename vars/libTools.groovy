@@ -7,7 +7,7 @@ def miseAjourDeployParameter(app, params) {
 
 def checkoutAfaire(app) {
 	app.workspace = pwd()
-	echo "Construction de ${app.name} ${env.BRANCH_NAME} "
+	echo "Construction de ${app.name} ${env.BRANCH_NAME} ${app.workspace} "
 	
 	deleteDir()
 	checkout scm
