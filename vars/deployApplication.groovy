@@ -42,7 +42,7 @@ def deploy = { environment, environmentInformations ->
 			stage('Build') {
 				steps {
 					echo  "Etape de test ${Appconfig['name']}"
-					bat "${app.resourcesPath}/contenu.bat"
+					bat "${Appconfig.resourcesPath}/contenu.bat"
 						
 					}
 			}	
