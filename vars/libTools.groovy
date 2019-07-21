@@ -11,5 +11,5 @@ def checkoutAfaire(app) {
 	
 	deleteDir()
 	checkout scm
-	sh "mkdir -p scripts"
+    bat "mkdir scripts"
 }
