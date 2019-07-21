@@ -59,7 +59,7 @@ def deploy = { environment, environmentInformations ->
 								}
 								parallel deployBranches
 							}
-					//}	
+					}	
 						
 					}
 			}		
