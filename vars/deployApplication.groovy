@@ -48,7 +48,7 @@ def deploy = { environment, environmentInformations ->
 			
 			stage('Deploy') {
 				steps {
-					dir(app.workspace) {
+					dir(Appconfig.workspace) {
 							
 							script {
 								def deployBranches = [:]
