@@ -5,7 +5,7 @@ def standardTemplate(overrideApp) {
 			rec: [ name : 'recette projet', deploy: false ],
 			preprod: [ name : 'recette preprod', deploy: false  ]
 		],
-		resourcesPath = scripts
+		resourcesPath : "scripts"
 
 
 	] << overrideApp
