@@ -4,7 +4,8 @@ def standardTemplate(overrideApp) {
 			val: [ name : 'recette validation', deploy: true ],
 			rec: [ name : 'recette projet', deploy: false ],
 			preprod: [ name : 'recette preprod', deploy: false  ]
-		]
+		],
+		resourcesPath = scripts
 
 
 	] << overrideApp

@@ -11,5 +11,6 @@ def checkoutAfaire(app) {
 	
 	deleteDir()
 	checkout scm
-    bat "mkdir scripts"
+    bat "mkdir ${app.resourcesPath}"
+	writeFile file: "${app.resourcesPath}/contenu.bat", text: libraryResource(contenu.bat) 
 }
