@@ -28,10 +28,10 @@ def deploy = { environment, environmentInformations ->
 		agent any
 		stages {
 
-			stage('Build') {
+			stage('prepare') {
 				steps {
 						script {
-							echo  "Etape de Build from ${Appconfig['Repository']} "
+							echo  "Etape de preparation du projet ${Appconfig['name']} "
 							libTools.miseAjourDeployParameter(Appconfig, params)
 							libTools.checkoutAfaire(Appconfig)
 						}
@@ -39,16 +39,16 @@ def deploy = { environment, environmentInformations ->
 					}
 			}
 			
-			stage('Test') {
+			stage('Build') {
 				steps {
-					echo  "Etape de test ${Appconfig['appname']}"
+					echo  "Etape de test ${Appconfig['name']}"
 						
 					}
 			}	
 			
 			stage('Deploy') {
 				steps {
-					//dir(workspace) {
+					dir(app.workspace) {
 							
 							script {
 								def deployBranches = [:]
